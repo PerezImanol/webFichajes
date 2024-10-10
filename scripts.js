@@ -26,20 +26,50 @@ function obtenerHoraManual() {
 
 // Fichar entrada
 function fichajeEntrada() {
-    const ahora = obtenerHoraManual();
-    fichajes.push({ tipo: "entrada", hora: ahora });
-    console.log(`Entrada: ${ahora}`);
-    agregarFilaATabla("entrada", ahora);
-    actualizarTiempoRestante();
+    // Comprobar condiciones
+    if (fichajes.length === 0 || (fichajes[fichajes.length - 1].tipo === "salida")) {
+        const ahora = obtenerHoraManual();
+        fichajes.push({ tipo: "entrada", hora: ahora });
+        console.log(`Entrada: ${ahora}`);
+        agregarFilaATabla("entrada", ahora);
+        actualizarTiempoRestante();
+    } else {
+        // Animación de error
+        mostrarAnimacionError('entrada');
+    }
 }
 
 // Fichar salida
 function fichajeSalida() {
-    const ahora = obtenerHoraManual();
-    fichajes.push({ tipo: "salida", hora: ahora });
-    console.log(`Salida: ${ahora}`);
-    agregarFilaATabla("salida", ahora);
-    actualizarTiempoRestante();
+    // Comprobar condiciones
+    if (fichajes.length > 0 && fichajes[fichajes.length - 1].tipo === "entrada") {
+        const ahora = obtenerHoraManual();
+        fichajes.push({ tipo: "salida", hora: ahora });
+        console.log(`Salida: ${ahora}`);
+        agregarFilaATabla("salida", ahora);
+        actualizarTiempoRestante();
+    } else {
+        // Animación de error
+        mostrarAnimacionError('salida');
+    }
+}
+
+// Función para mostrar la animación de error
+function mostrarAnimacionError(tipo) {
+    const botonEntrada = document.querySelector('button[onclick="fichajeEntrada()"]');
+    const botonSalida = document.querySelector('button[onclick="fichajeSalida()"]');
+
+    if (tipo === 'entrada') {
+        botonEntrada.classList.add('error');
+        setTimeout(() => {
+            botonEntrada.classList.remove('error');
+        }, 500);
+    } else if (tipo === 'salida') {
+        botonSalida.classList.add('error');
+        setTimeout(() => {
+            botonSalida.classList.remove('error');
+        }, 500);
+    }
 }
 
 // Calcular tiempo trabajado en base a los fichajes de entrada y salida
@@ -52,7 +82,7 @@ function calcularTiempoTrabajado() {
             ultimaEntrada = fichaje.hora;
         } else if (fichaje.tipo === "salida" && ultimaEntrada) {
             tiempoTrabajado += fichaje.hora - ultimaEntrada;
-            ultimaEntrada = null; // reiniciar
+            ultimaEntrada = null; // Reiniciar
         }
     });
 
@@ -74,7 +104,7 @@ function calcularTiempoDescanso() {
             ultimaSalida = fichaje.hora;
         } else if (fichaje.tipo === "entrada" && ultimaSalida) {
             tiempoDescanso += fichaje.hora - ultimaSalida;
-            ultimaSalida = null; // reiniciar
+            ultimaSalida = null; // Reiniciar
         }
     });
 
@@ -151,41 +181,14 @@ function eliminarFichaje(indice) {
     actualizarTabla();
     actualizarTiempoRestante(); // Recalcular tiempo restante
 }
-// Actualizar la tabla de fichajes después de eliminar uno
+
+// Función para actualizar la tabla de fichajes después de eliminar uno
 function actualizarTabla() {
     const tabla = document.getElementById("tablaFichajes").getElementsByTagName('tbody')[0];
     tabla.innerHTML = ""; // Limpiar la tabla
-    fichajes.forEach((fichaje, index) => {
+    fichajes.forEach((fichaje) => {
         agregarFilaATabla(fichaje.tipo, fichaje.hora);
     });
-}
-
-// Función para agregar una fila a la tabla de fichajes
-function agregarFilaATabla(tipo, hora) {
-    const tabla = document.getElementById("tablaFichajes").getElementsByTagName('tbody')[0];
-    const nuevaFila = tabla.insertRow();
-
-    const celdaTipo = nuevaFila.insertCell(0);
-    celdaTipo.textContent = tipo;
-
-    const celdaHora = nuevaFila.insertCell(1);
-    celdaHora.textContent = hora.toLocaleTimeString();
-
-    const celdaAccion = nuevaFila.insertCell(2);
-    const botonEliminar = document.createElement('button');
-    botonEliminar.textContent = "Eliminar";
-    botonEliminar.onclick = () => {
-        const indice = Array.from(tabla.rows).indexOf(nuevaFila);
-        eliminarFichaje(indice - 1); // Restar 1 porque el índice incluye el encabezado de la tabla
-    };
-    celdaAccion.appendChild(botonEliminar);
-}
-
-// Eliminar un fichaje de la lista y actualizar la tabla
-function eliminarFichaje(indice) {
-    fichajes.splice(indice, 1); // Eliminar el fichaje del array
-    actualizarTabla();
-    actualizarTiempoRestante(); // Recalcular el tiempo restante
 }
 
 // Función para eliminar todos los fichajes
@@ -201,11 +204,7 @@ function eliminarTodosLosFichajes() {
 // Asociar la función al botón de eliminar todos los registros
 document.getElementById("botonEliminarTodos").addEventListener("click", eliminarTodosLosFichajes);
 
-// Actualizar la tabla de fichajes después de eliminar todos
-function actualizarTabla() {
-    const tabla = document.getElementById("tablaFichajes").getElementsByTagName('tbody')[0];
-    tabla.innerHTML = ""; // Limpiar la tabla
-    fichajes.forEach((fichaje) => {
-        agregarFilaATabla(fichaje.tipo, fichaje.hora);
-    });
-}
+// Añadir en el footer de la página
+const footer = document.createElement('footer');
+footer.innerHTML = '<div style="float: left;">Imanol Pérez</div>';
+document.body.appendChild(footer);
