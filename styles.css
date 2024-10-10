@@ -1,0 +1,432 @@
+/* Variables CSS para facilitar la gestión de colores y tamaños */
+:root {
+    --primary-color: #0076A8;
+    /* Azul Cerúleo */
+    --secondary-color: #4B8DBA;
+    /* Azul Medio */
+    --text-color: #003B5C;
+    /* Azul Oscuro para el texto */
+    --background-color: #f0f4f8;
+    /* Fondo claro */
+    --table-header-color: #88B2D0;
+    /* Azul Pastel para encabezados de tabla */
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    /* Color de sombra */
+}
+
+/* Estilos globales */
+body {
+    font-family: 'Poppins', sans-serif;
+    /* Fuente Poppins importada */
+    background-color: var(--background-color);
+    /* Fondo suave */
+    color: var(--text-color);
+    /* Azul Oscuro para el texto */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    /* Centrar todo el texto */
+    overflow-x: hidden;
+    /* Evitar el scroll horizontal */
+}
+
+/* Estilo de fondo con una imagen sutil */
+body::before {
+    content: "";
+    background-image: url('https://example.com/your-background-image.jpg');
+    /* Imagen de fondo */
+    background-size: cover;
+    /* Cubrir todo el fondo */
+    opacity: 0.1;
+    /* Opacidad para que no distraiga */
+    position: absolute;
+    /* Posicionamiento absoluto */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    /* Envuelve el contenido detrás */
+}
+
+/* Estilos del header */
+header {
+    background-color: var(--primary-color);
+    /* Azul Cerúleo */
+    color: white;
+    /* Texto en blanco */
+    padding: 20px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    /* Sombra más profunda para el header */
+}
+
+/* Estilos de navegación */
+nav {
+    margin: 10px 0;
+}
+
+nav a {
+    color: white;
+    /* Enlaces en blanco */
+    text-decoration: none;
+    /* Sin subrayado */
+    margin: 0 15px;
+    /* Espaciado entre enlaces */
+    font-weight: 500;
+    /* Peso de fuente para enlaces */
+    transition: color 0.3s;
+    /* Transición para el color */
+}
+
+nav a:hover {
+    color: #FFD700;
+    /* Color dorado al pasar el mouse */
+}
+
+/* Estilos del contenido principal */
+main {
+    padding: 20px;
+}
+
+/* Estilos para botones */
+button {
+    background-color: var(--secondary-color);
+    /* Azul Medio */
+    color: white;
+    /* Texto en blanco */
+    border: none;
+    /* Sin borde */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    padding: 12px 24px;
+    /* Espaciado interno más grande */
+    cursor: pointer;
+    /* Cambiar cursor a mano */
+    transition: background-color 0.3s, box-shadow 0.3s;
+    /* Transición suave */
+    font-size: 16px;
+    /* Tamaño de fuente de los botones */
+    display: inline-block;
+    /* Para que el botón se centre correctamente */
+}
+
+button:hover {
+    background-color: #005B8C;
+    /* Azul Profundo al pasar el mouse */
+    box-shadow: 0 4px 10px var(--shadow-color);
+    /* Sombra al pasar el mouse */
+}
+
+/* Estilos para la tabla */
+table {
+    width: 80%;
+    /* Ancho de la tabla */
+    margin: 20px auto;
+    /* Centrar la tabla */
+    border-collapse: collapse;
+    /* Sin espacio entre celdas */
+}
+
+/* Estilos para celdas de la tabla */
+th,
+td {
+    border: 1px solid #003B5C;
+    /* Borde azul oscuro */
+    padding: 12px;
+    /* Espaciado interno */
+    text-align: left;
+    /* Alinear texto a la izquierda */
+    font-size: 16px;
+    /* Tamaño de fuente de las celdas */
+}
+
+/* Estilo para la cabecera de la tabla */
+th {
+    background-color: #88B2D0;
+    /* Azul Pastel para el encabezado de la tabla */
+    color: #003B5C;
+    /* Azul Oscuro para el texto */
+}
+
+/* Estilos para encabezados de la tabla */
+th {
+    background-color: #88B2D0; /* Azul Pastel para el encabezado de la tabla */
+    color: #003B5C; /* Azul Oscuro para el texto */
+    padding: 12px; /* Espaciado interno */
+    text-align: left; /* Alinear texto a la izquierda */
+    font-size: 18px; /* Tamaño de fuente más grande */
+    border: none; /* Sin borde */
+    border-bottom: 2px solid #003B5C; /* Borde inferior azul oscuro */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Estilos para celdas de la tabla */
+td {
+    border: 1px solid #003B5C; /* Borde azul oscuro */
+    padding: 12px; /* Espaciado interno */
+    text-align: left; /* Alinear texto a la izquierda */
+    font-size: 16px; /* Tamaño de fuente de las celdas */
+}
+
+
+/* Estilo para la columna de acción */
+td:last-child {
+    width: 100px;
+    /* Ajustar el ancho de la columna de acción */
+    text-align: center;
+    /* Centrar el contenido en la columna de acción */
+}
+
+/* Estilo para los botones en la tabla */
+td button {
+    background-color: #D9534F;
+    /* Color de fondo rojo para el botón de eliminar */
+    color: white;
+    /* Texto en blanco */
+    border: none;
+    /* Sin borde */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    padding: 8px 12px;
+    /* Espaciado interno */
+    cursor: pointer;
+    /* Cambiar cursor a mano */
+    transition: background-color 0.3s;
+    /* Transición suave */
+}
+
+/* Estilo para el botón al pasar el mouse */
+td button:hover {
+    background-color: #C9302C;
+    /* Rojo oscuro al pasar el mouse */
+}
+
+/* Estilos de pie de página */
+footer {
+    background-color: var(--primary-color);
+    /* Azul Cerúleo */
+    color: white;
+    /* Texto en blanco */
+    text-align: center;
+    padding: 15px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 10px var(--shadow-color);
+    /* Sombra en el pie de página */
+}
+
+/* Estilos para secciones */
+section {
+    margin: 20px 0;
+    /* Espaciado entre secciones */
+    padding: 15px;
+    background-color: white;
+    /* Fondo blanco para contraste */
+    border-radius: 8px;
+    /* Bordes redondeados */
+    box-shadow: 0 1px 5px var(--shadow-color);
+    /* Sombra sutil */
+}
+h1{
+    font-size: 50px;
+}
+/* Centrar el contenido en las secciones */
+section h1,
+section h2,
+section p {
+    margin: 0;
+    /* Sin margen */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    /* Sombra en el texto */
+}
+
+/* Centrar tabla al final */
+.table-container {
+    text-align: center;
+    /* Centrar tabla */
+}
+
+/* Estilos para la combo box */
+select {
+    background-color: white;
+    /* Fondo blanco */
+    color: var(--text-color);
+    /* Texto en azul oscuro */
+    border: 1px solid var(--secondary-color);
+    /* Borde en azul medio */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    padding: 10px 15px;
+    /* Espaciado interno */
+    font-size: 16px;
+    /* Tamaño de fuente igual que el de los botones */
+    font-family: 'Poppins', sans-serif;
+    /* Mismo tipo de letra */
+    cursor: pointer;
+    /* Cambiar cursor a mano */
+    transition: border-color 0.3s, box-shadow 0.3s;
+    /* Transición suave */
+    display: inline-block;
+    /* Para que se centre correctamente */
+}
+
+select:hover {
+    border-color: #005B8C;
+    /* Cambiar color del borde al pasar el mouse */
+    box-shadow: 0 4px 10px var(--shadow-color);
+    /* Sombra al pasar el mouse */
+}
+
+select:focus {
+    outline: none;
+    /* Sin borde al seleccionar */
+    border-color: #005B8C;
+    /* Color del borde al enfocar */
+    box-shadow: 0 0 5px rgba(0, 91, 140, 0.5);
+    /* Sombra al enfocar */
+}
+
+#reloj {
+    font-size: 106px;
+    /* Tamaño de fuente aún más grande */
+    font-weight: 700;
+    /* Negrita para mayor énfasis */
+    color: #003B5C;
+    /* Azul oscuro para el texto */
+    margin: 20px 0;
+    /* Margen superior e inferior */
+    text-align: center;
+    /* Centrar el texto */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    /* Sombra de texto */
+}
+
+/* Estilos para el selector de hora */
+input[type="time"] {
+    background-color: white;
+    /* Fondo blanco */
+    color: #003B5C;
+    /* Azul oscuro para el texto */
+    border: 1px solid #003B5C;
+    /* Borde azul oscuro */
+    border-radius: 5px;
+    /* Bordes redondeados */
+    padding: 8px;
+    /* Espaciado interno reducido */
+    font-size: 14px;
+    /* Tamaño de fuente más pequeño que la combo box y mayor que los botones */
+    appearance: none;
+    /* Eliminar el estilo predeterminado */
+    width: 100%;
+    /* Ajustar al ancho completo */
+    max-width: 150px;
+    /* Ancho máximo del selector */
+    cursor: pointer;
+    /* Cambiar cursor a mano */
+    display: block;
+    /* Hacer que el input sea un bloque para centrarlo */
+    margin: 0 auto;
+    /* Centrar el input */
+}
+
+/* Estilos para cuando se enfoca el selector */
+input[type="time"]:focus {
+    outline: none;
+    /* Eliminar el borde de enfoque predeterminado */
+    border-color: #4B8DBA;
+    /* Cambiar el color del borde al enfocar */
+    box-shadow: 0 0 5px rgba(75, 141, 186, 0.5);
+    /* Sombra de enfoque */
+}
+
+/* Contenedor principal para fichajes e información */
+.fichajes-container {
+    display: flex;
+    /* Usar flexbox para el diseño en columnas */
+    justify-content: space-between;
+    /* Espacio entre las columnas */
+    align-items: stretch;
+    /* Alinear elementos al mismo alto */
+    margin: 20px 0;
+    /* Margen superior e inferior */
+}
+
+/* Estilos para la sección de fichajes */
+.fichajes {
+    flex: 1;
+    /* Ocupar espacio en proporción */
+    margin-right: 20px;
+    /* Espacio entre columnas */
+    background-color: white;
+    /* Fondo blanco para contraste */
+    padding: 20px;
+    /* Espaciado interno aumentado */
+    border-radius: 8px;
+    /* Bordes redondeados */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    /* Sombra sutil */
+}
+
+/* Estilos para la sección de información */
+.informacion {
+    flex: 1;
+    /* Ocupar espacio en proporción */
+    background-color: white;
+    /* Fondo blanco para contraste */
+    padding: 20px;
+    /* Espaciado interno aumentado */
+    border-radius: 8px;
+    /* Bordes redondeados */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    /* Sombra sutil */
+}
+
+/* Estilo de error para los botones */
+.error {
+    animation: shake 0.5s;
+}
+.boton-eliminar {
+    background-color: #FF4C4C; /* Color de fondo igual al botón de eliminar */
+    color: white; /* Color del texto */
+    padding: 15px 20px; /* Aumentar espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
+    font-size: 18px; /* Aumentar tamaño de la fuente */
+    margin-top: 20px; /* Separación superior */
+    width: 100%; /* Ajustar al ancho del contenedor */
+    max-width: 300px; /* Aumentar ancho máximo para ser más grande */
+}
+
+.boton-eliminar:hover {
+    background-color: #e63939; /* Color más oscuro al pasar el ratón */
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+        /* Hacer la tabla más ancha en móviles */
+        font-size: 14px;
+        /* Disminuir el tamaño de la fuente */
+    }
+
+    button {
+        padding: 10px 20px;
+        /* Hacer botones más pequeños en móvil */
+    }
+
+    section {
+        margin: 10px;
+        /* Ajustar márgenes en móviles */
+    }
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de fichajes</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    />
+  </head>
+
+  <body>
+    <header></header>
+    <body>
+      <div class="container">
+        <h1>Control de Fichajes</h1>
+        <p id="reloj">--:--:--</p>
+        <label for="tipoJornada">Selecciona tipo de jornada:</label>
+        <br><br>
+        <select id="tipoJornada">
+          <option value="9h">9 horas (Lunes a Jueves)</option>
+          <option value="6h">6 horas (Viernes)</option>
+        </select>
+      </div>
+      <div class="fichajes-container">
+        <div class="fichajes">
+            <h2>Fichajes</h2>
+            <label for="horaManual">Selecciona la hora manualmente (opcional):</label>
+            <br><br>
+            <input type="time" id="horaManual" />
+            <br>
+            <button id="botonEntrada" onclick="fichajeEntrada()">Fichar Entrada</button>
+            <button id="botonSalida" onclick="fichajeSalida()">Fichar Salida</button>
+        </div>
+    
+        <div class="informacion">
+            <h2>Información</h2>
+            <p id="tiempoRestante">Tiempo restante: -</p>
+            <p id="tiempoDescanso">Tiempo de descanso: -</p>
+            <p id="tiempoComida" style="display: none;">Tiempo de comida: -</p>
+        </div>
+    </div>
+        <h2>Lista de Fichajes</h2>
+        <table id="tablaFichajes" border="1">
+          <thead>
+            <tr>
+              <th>Tipo</th>
+              <th>Hora</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Fichajes se irán añadiendo aquí -->
+          </tbody>
+        </table>
+        <button class="boton-eliminar" id="botonEliminarTodos" onclick="eliminarTodosFichajes()">Eliminar Todos los Registros</button>
+        <br><br><br>
+      </div>
+    </body>
+    <footer style="display: flex; justify-content: flex-start; padding: 10px; background-color: #88B2D0; color: #003B5C; font-size: 16px;">
+      <div>Imanol Pérez</div>
+  </footer>
+  </body>
+  <script src="scripts.js"></script>
+</html>
